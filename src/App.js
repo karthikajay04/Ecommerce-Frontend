@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { CoustomerRouters } from './Routers/CoustomerRouters';
+
+// Optional: you can import these individually if you ever want direct testing
+import Navigation from './customer/components/Navigation/Navigation';
+import { Homepage } from './customer/pages/Homepage/Homepage';
+import Footer from './customer/components/Footer/Footer';
+import Product from './customer/components/Product/Product';
+import ProductDetails from './customer/components/ProductDetails/ProductDetails';
+import { Cart } from './customer/components/Cart/Cart';
+import Checkout from './customer/components/Checkout/Checkout';
+import { Order } from './customer/components/Order/Order';
+import { OrderDetails } from './customer/components/Order/OrderDetails';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* 
+        Wrap all customer routes in a single router.
+        This ensures that /women/clothing/top and all nested paths
+        are handled by the CoustomerRouters component.
+      */}
+      <Routes>
+        <Route path="/*" element={<CoustomerRouters />} />
+      </Routes>
+
+      {/* You can add global modals or overlays here if needed */}
+      
     </div>
   );
 }
